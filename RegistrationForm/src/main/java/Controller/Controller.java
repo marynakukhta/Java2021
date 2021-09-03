@@ -20,8 +20,11 @@ public class Controller {
 
     public void processUser(){
         Scanner scanner = new Scanner(System.in);
-        UtilityController uc = new UtilityController(scanner, view);
-        uc.inputStringValueWithScanner(INPUT_FIRST_NAME,REGEX_NAME_LAT);
+        NoteBook noteBook = new NoteBook(view, scanner);
+        noteBook.addToNoteBook();
+
+
+
 
     }
 }
