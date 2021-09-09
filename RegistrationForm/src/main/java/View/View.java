@@ -27,6 +27,7 @@ public class View {
         return new String(string);
     }
 
+
     public void printInputData(String message){
         printMessage(concatString(
                 resourceBundle.getString(INPUT_DATA),
