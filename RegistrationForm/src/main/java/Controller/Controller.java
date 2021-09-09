@@ -13,7 +13,11 @@ public class Controller {
     private View view;
     private Model model;
 
-
+    /**
+     * Конструктор - создание нового объекта с определенными значениями
+     * @param view - объект класса View
+     * @param model - объект класса View
+     */
     public Controller(View view, Model model) {
         this.view = view;
         this.model = model;
