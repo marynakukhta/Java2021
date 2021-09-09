@@ -1,14 +1,14 @@
 package Model;
 
-public class NotUniqueLoginException extends Exception{
-    private final String NotUniqueLogin;
+public class NotUniqueLoginException extends Throwable{
+    private final String notUniqueLogin;
 
     public NotUniqueLoginException(String message,String notUniqueLogin) {
         super(message);
-        this.NotUniqueLogin = notUniqueLogin;
+        this.notUniqueLogin = notUniqueLogin;
     }
 
     public String getNotUniqueLogin(){
-        return this.NotUniqueLogin;
+        return this.notUniqueLogin;
     }
 }

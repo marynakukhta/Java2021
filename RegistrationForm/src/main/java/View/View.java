@@ -1,9 +1,7 @@
 package View;
 
-
 import java.util.Locale;
 import java.util.ResourceBundle;
-
 import static View.TextConstants.*;
 
 
@@ -40,9 +38,5 @@ public class View {
                 resourceBundle.getString(INPUT_DATA),
                 resourceBundle.getString(message)));
     }
-
-
-
-
 
 }
