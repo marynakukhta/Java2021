@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 public class TryCatch {
 
     public static void App(String[] args) throws Throwable {
@@ -234,6 +236,91 @@ public class TryCatch {
             }
             System.err.println(".   .   .   #4.out"); // ПРОПУСТИЛИ!
         }
+    }
+
+    /**
+     * Иерархия исключений:
+     *
+     *                     Object
+     *                       |
+     *                   Throwable
+     *                   /      \
+     *               Error     Exception
+     *                             |
+     *                     RuntimeException
+     *
+     *
+     * Со свойством checked/unchecked:
+     *
+     *                         Object
+     *                       |
+     *                Throwable(CHECKED)
+     *                /            \
+     *      Error(UNCHECKED)    Exception(CHECKED)
+     *                             |
+     *                   RuntimeException(UNCHECKED)
+     */
+
+    /**
+     * Нельзя бросить и не предупредить
+     */
+    public static class App7 {
+        public static void main(String[] args) {
+            // тут ошибка компиляции
+            //throw new Exception();
+        }
+    }
+
+    /**
+     * Нельзя бросить и предупредить о меньшем
+     */
+    public static class App8 {
+        public static void main(String[] args) throws IOException {
+            // тут ошибка компиляции
+            //throw new Exception();
+        }
+    }
+
+    /**
+     * Можно предупредить точно о том, что бросаем
+     */
+    public static class App9 {
+        public static void main(String[] args) throws Exception { // предупреждаем о Exception
+            throw new Exception(); // и кидаем Exception
+        }
+    }
+
+    /**
+     * Можно предупредить о большем, чем бросаем
+     */
+    public static class App10 {
+        public static void main(String[] args) throws Throwable { // предупреждаем "большим" Throwable
+            // а кидаем только Exception
+            throw new Exception();
+        }
+    }
+
+    /**
+     * Можно предупредить о том, чего нет
+     */
+    public static class App11 {
+        public static void main(String[] args) throws Exception { // пугаем
+            // но ничего не бросаем
+        }
+    }
+
+    /**
+     * Даже если предупреждаем о том, чего нет — все обязаны бояться
+     */
+    public static class App12 {
+        public static void main(String[] args) {
+            // тут ошибка компиляции
+            //f();
+        }
+
+        public static void f() throws Exception {
+        }
+
     }
 }
 
