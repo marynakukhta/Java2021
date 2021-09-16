@@ -9,7 +9,7 @@ public class Main {
         Shape shape2 = new Triangle(new Point(4,3), new Point(8,8), new Point(12,3));
         System.out.println(shape2.perimeter());
         System.out.println(shape2.square());
-        shape2.move(2,3);
+
 
 
 
