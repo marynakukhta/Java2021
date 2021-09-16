@@ -6,6 +6,7 @@ package com.company.entities;
 public class Driver {
     private Human human;
     private DriverLicense driverLicense;
+    private CarDriver carDriver;
 
     public Driver() {
     }
@@ -37,5 +38,21 @@ public class Driver {
                 "human=" + human +
                 ", driverLicense=" + driverLicense +
                 '}';
+    }
+
+    public void setCarDriver(CarDriver carDriver) {
+        this.carDriver = carDriver;
+    }
+
+    public CarDriver getCarDriver() {
+        return carDriver;
+    }
+
+    public void move() {
+        carDriver.move();
+    }
+
+    public void stop() {
+        carDriver.stop();
     }
 }
