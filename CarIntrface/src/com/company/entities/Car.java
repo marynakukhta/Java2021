@@ -1,6 +1,6 @@
 package com.company.entities;
 
-public class Car implements CarDriver, CarRefueler {
+public class Car implements CarDriver, CarRefueler, CarGarage {
     public enum Transmission { MECHANICAL , AUTOMATIC };
     private Transmission transmission;
     private String model;
@@ -62,6 +62,17 @@ public class Car implements CarDriver, CarRefueler {
             isFuelTankCoverOpen = false;
             System.out.println("The fuel tank cover is close");
         }
+    }
+
+    @Override
+    public void driveInto() {
+        System.out.println("Car drove into garage");
+
+    }
+
+    @Override
+    public void driveOut() {
+        System.out.println("Car drove out of the garage ");
     }
 
     public Transmission getTransmission() {
