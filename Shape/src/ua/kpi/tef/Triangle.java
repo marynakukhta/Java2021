@@ -71,6 +71,7 @@ public class Triangle extends Shape {
 
     public Point getPointC() {
         return pointC;
+
     }
 
 }
