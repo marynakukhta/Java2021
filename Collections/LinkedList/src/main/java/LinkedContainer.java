@@ -1,8 +1,15 @@
-public class LinkedContainer<E> implements Linked<E>{
+import java.util.Iterator;
+
+public class LinkedContainer<E> implements Linked<E>, Iterable<E>, DescendingIterator<E>{
 
     private Node<E> fstNode;
     private Node<E> lstNode;
     private int size;
+
+    public LinkedContainer(Node<E> fstNode, Node<E> lstNode) {
+        this.fstNode = new Node<E>(null, null, lstNode);
+        this.lstNode = new Node<E>(null, fstNode, null);
+    }
 
     @Override
     public void addLast(E e) {
@@ -15,7 +22,11 @@ public class LinkedContainer<E> implements Linked<E>{
 
     @Override
     public void addFirst(E e) {
-
+        Node<E> next = fstNode;
+        next.setCurrentElement(e);
+        fstNode = new Node<>(null, null, next);
+        next.setPrevElement(fstNode);
+        size++;
     }
 
     @Override
@@ -34,6 +45,38 @@ public class LinkedContainer<E> implements Linked<E>{
 
     private Node<E> getNextElement(Node<E> current){
         return current.getNextElement();
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return new Iterator<E>() {
+            int counter;
+            @Override
+            public boolean hasNext() {
+                return counter < size;
+            }
+
+            @Override
+            public E next() {
+                return getByIndex(counter++);
+            }
+        };
+    }
+
+    @Override
+    public Iterator<E> descendingIterator() {
+        return new Iterator<E>() {
+            int counter = size - 1;
+            @Override
+            public boolean hasNext() {
+                return counter >= 0;
+            }
+
+            @Override
+            public E next() {
+                return getByIndex(counter--);
+            }
+        };
     }
 
     private class Node<E>{
@@ -71,7 +114,5 @@ public class LinkedContainer<E> implements Linked<E>{
             this.prevElement = prevElement;
         }
     }
-
-
 }
 
